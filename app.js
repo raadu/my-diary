@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const {render} = require('ejs');
 const blogRoutes = require('./routes/blogRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 //Express app
 const app = express();
@@ -11,7 +12,9 @@ const app = express();
 const dbURI = "mongodb+srv://netninja:test1234@cluster0.eoxro.mongodb.net/node-tuts?retryWrites=true&w=majority";
 mongoose.connect(dbURI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: true,
 })
 .then((result) => app.listen(3000))
 .catch((err) => console.log(err));
@@ -43,6 +46,9 @@ app.get('/about-us', (req, res) => {
 
 //Blog routes. To all the routes in cotrollers/blogController
 app.use('/blogs', blogRoutes);
+
+//Auth routes. All authentications done here.
+app.use(authRoutes);
 
 //404 error page
 //if no routes matches then fire this function
