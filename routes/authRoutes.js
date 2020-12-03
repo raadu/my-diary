@@ -1,7 +1,10 @@
 const {Router} = require('express');
+const authController = require('../controllers/authController');
 const {
     signup_get,
     login_get,
+    signup_post,
+    login_post,
 } = require('../controllers/authController');
 
 const router = Router();
@@ -13,8 +16,10 @@ router.get('/signup', signup_get);
 router.get('/login', login_get);
 
 // Signup POST Route
+router.post('/signup', authController.signup_post);
 
 // Login POST Route
+router.post('/login', authController.login_post);
 
 // Logout GET Route
 
