@@ -45,9 +45,9 @@
                 emailError.textContent = data.errors.email;
                 passwordError.textContent = data.errors.password;
             }
-            //If user signup successful then redirect to homepage
+            //If user signup successful then redirect to blogs page
             if(data.user) {
-                location.assign('/');
+                location.assign('/blogs');
             }
         }
         catch (err) {

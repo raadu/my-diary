@@ -48,7 +48,8 @@ app.get("*", checkUser);
 
 //Homepage redirects to /blogs page
 app.get('/', (req, res) => {
-    res.redirect('/blogs');
+    // res.redirect('/blogs');
+    res.render('homepage');
 });
 
 //GET req to about page
@@ -62,7 +63,7 @@ app.get('/about-us', (req, res) => {
 });
 
 //Blog routes. To all the routes in cotrollers/blogController
-app.use('/blogs', blogRoutes);
+app.use('/blogs', requireAuth, blogRoutes);
 
 //Auth routes. All authentications done here.
 app.use(authRoutes);

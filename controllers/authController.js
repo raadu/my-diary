@@ -58,7 +58,7 @@ const login_get = (req, res) => {
 }
 
 // Signup POST Controller
-const signup_post = async (req, res) => {
+const signup_post = async (req, res, next) => {
     const {email, password} = req.body;
 
     //Try to create a new user with email, password in DB
