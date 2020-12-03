@@ -9,13 +9,13 @@ const {
     requireAuth,
     checkUser,
 } = require('./middlewares/authMiddleware');
+require('dotenv').config();
 
 //Express app
 const app = express();
 
 //Connect to mongodb
-const dbURI = "mongodb+srv://netninja:test1234@cluster0.eoxro.mongodb.net/node-tuts?retryWrites=true&w=majority";
-mongoose.connect(dbURI, {
+mongoose.connect(process.env.dbURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,

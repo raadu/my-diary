@@ -10,7 +10,7 @@ const requireAuth = (req, res, next) => {
     if(token) {
         // Verify the token
         // Pass the secret key used in authController.createToken()
-        jwt.verify(token, "asjdu898ad7asysya8da8sd", (err, decodedToken) => {
+        jwt.verify(token, process.env.SECRET_KEY, (err, decodedToken) => {
             if(err) {
                 console.log(err.message);
                 res.redirect('/login');
@@ -35,7 +35,7 @@ const checkUser = (req, res, next) => {
     if(token) {
         // Verify the token
         // Pass the secret key used in authController.createToken()
-        jwt.verify(token, "asjdu898ad7asysya8da8sd", async (err, decodedToken) => {
+        jwt.verify(token, process.env.SECRET_KEY, async (err, decodedToken) => {
             if(err) {
                 console.log(err.message);
                 // user does not exist
